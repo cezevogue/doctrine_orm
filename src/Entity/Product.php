@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ProductRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints  as Assert;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -14,14 +15,20 @@ class Product
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank(message: "Champs Obligatoire")]
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
+    #[Assert\Positive(message: "Veuillez renseigner un prix supérieur à zéro")]
+    #[Assert\NotBlank(message: "Champs Obligatoire")]
     #[ORM\Column]
     private ?float $price = null;
 
+    #[Assert\NotBlank(message: "Champs Obligatoire")]
     #[ORM\Column(length: 255)]
     private ?string $picture = null;
+
+    public ?string $updatePicture = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $publish_date = null;

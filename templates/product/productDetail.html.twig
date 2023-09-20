@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <div class="card w-50 mx-auto mt-5">
+        <div class="card-header m-0 p-0"><img src="{{ asset('upload/') }}{{ product.picture }}" alt="" class="card-img img-fluid"></div>
+        <div class="card-body">
+            <p class="card-title">{{ product.title }}</p>
+            <p class="card-title">{{ product.price }}€</p>
+        </div>
+    </div>
+{% endblock %}
+
